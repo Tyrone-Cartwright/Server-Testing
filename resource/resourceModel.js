@@ -10,10 +10,10 @@ module.exports = {
 
 async function insert(resource) {
   // returns [1]
-  const id = await db("resources").insert(resource);
+  const [ids] = await db("resources").insert(resource);
   console.log(id);
   return db("resources")
-    .where(id)
+    .where([id])
     .first();
 }
 
