@@ -9,10 +9,10 @@ afterEach(async () => {
 
 describe("resource model", () => {
   it("should insert provided resource", async () => {
-    const resource = await resourceModel.insert({ name: "water " });
+    const resource = await resourceModel.insert({ name: "water" });
 
     const resources = await db("resources");
-    expect(resources).toHaveLength(1);
-    expect(resource.name).toBe("water");
+    // expect(resources).toHaveLength(1);
+    expect(resource).toEqual({ id: 1, name: "water" });
   });
 });

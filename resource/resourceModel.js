@@ -10,11 +10,15 @@ module.exports = {
 
 async function insert(resource) {
   // returns [1]
-  const [ids] = await db("resources").insert(resource);
-  console.log(id);
-  return db("resources")
-    .where([id])
-    .first();
+  try {
+    const [id] = await db("resources").insert(resource);
+    console.log(id);
+    return await db("resources")
+      .where({ id })
+      .first();
+  } catch (err) {
+    console.log(error);
+  }
 }
 
 async function update(id, resource) {

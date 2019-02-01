@@ -22,12 +22,12 @@ describe("server.js", () => {
       let response = await request(server)
         .post("/resources")
         .send(body);
-      expect(response.body).toEqual({ resource: "wheat" });
+      expect(response.body).toEqual({ name: "wheat" });
 
       response = await request(server)
         .post("/resources")
         .send({ name: "fiber" });
-      expect(response.body).toEqual({ resource: "fiber" });
+      expect(response.body).toEqual({ name: "fiber" });
     });
   });
 });
