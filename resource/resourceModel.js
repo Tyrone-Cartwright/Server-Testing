@@ -4,21 +4,23 @@ module.exports = {
   insert,
   update,
   remove,
-  getAll,
-  findById
+  getAll
+  // findById
 };
 
-async function insert(hobbit) {
+async function insert(resource) {
   // returns [1]
-  const [ids] = await db("resources").insert(resource);
-
+  const id = await db("resources").insert(resource);
+  console.log(id);
   return db("resources")
-    .where([id])
+    .where(id)
     .first();
 }
 
-async function update(id, changes) {
-  return null;
+async function update(id, resource) {
+  return db("resources")
+    .where({ id })
+    .update(resource);
 }
 
 function remove(id) {
@@ -26,5 +28,5 @@ function remove(id) {
 }
 
 function getAll() {
-  return db("resources");
+  return db("resource");
 }
